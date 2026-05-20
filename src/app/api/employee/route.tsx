@@ -1,9 +1,3 @@
-// src/app/api/onboarding/route.ts
-
-import { NextRequest, NextResponse } from "next/server"
-
-import { employeeDraftSchema } from "@/app/schema";
- 
 import { prisma } from "@/lib/prisma" 
 
 export async function POST(request: Request) {
