@@ -1,21 +1,14 @@
 import "dotenv/config"
 
-import languages from "./data/programming-languages.json";
+import languages from "./data/programming-languages.json" with { type: "json" };
 import roles from "./data/roles.json";
 
-import { PrismaClient } from "../src/generated/prisma/client"
-import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3"
-import path from "path"
-
-const databasePath = path.join(process.cwd(), "prisma", "dev.db")
-
-const adapter = new PrismaBetterSqlite3({
-  url: `file:${databasePath}`,
-})
-
-const prisma = new PrismaClient({
-  adapter,
-})   
+import { PrismaClient } from "../src/generated/prisma/client" 
+import { PrismaPg } from "@prisma/adapter-pg";
+const adapter = new PrismaPg({
+  connectionString: process.env.DATABASE_URL!,
+});
+export const prisma = new PrismaClient({ adapter });
 
 
 async function addRoles() {

@@ -31,6 +31,7 @@ export async function GET(
     return Response.json({
         id: employee.id,
         idNumber: employee.idNumber,
+        lastSubmittedAt: employee.lastSubmittedAt,
         currentStep: employee.currentStep,
         completed: employee.completed,
 

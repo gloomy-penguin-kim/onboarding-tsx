@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma"; 
-import { employeeDraftSchema } from "@/app/onboarding/schema";
+import { employeeDraftSchema } from "@/app/schema";
 
 
 export async function PATCH(

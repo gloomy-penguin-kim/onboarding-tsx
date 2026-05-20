@@ -2,7 +2,7 @@
 
 import { NextRequest, NextResponse } from "next/server"
 
-import { employeeDraftSchema } from "@/app/onboarding/schema";
+import { employeeDraftSchema } from "@/app/schema";
  
 import { prisma } from "@/lib/prisma" 
 

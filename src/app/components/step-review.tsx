@@ -2,7 +2,7 @@ import type { Role, Skill } from "./types";
 
 type ReviewStepProps = {
     idNumber: string;
-    lastSubmittedAt?: Date;
+    lastSubmittedAt?: string | null;
     firstName: string;
     lastName: string;
     email: string;

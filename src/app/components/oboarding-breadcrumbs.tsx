@@ -146,6 +146,25 @@ export function OnboardingBreadcrumb({
                         </BreadcrumbItem>
                     </>
                 )}
+
+                {step >= 6 && (
+                    <>
+                        <BreadcrumbSeparator />
+
+                        <BreadcrumbItem>
+                            <BreadcrumbLink asChild>
+                                <button
+                                    type="button"
+                                    disabled={!canNavigatePastId}
+                                    onClick={() => handleNavigation(6)}
+                                    className={step === 5 ? "font-semibold" : ""}
+                                >
+                                    Thank You
+                                </button>
+                            </BreadcrumbLink>
+                        </BreadcrumbItem>
+                    </>
+                )}
             </BreadcrumbList>
         </Breadcrumb>
     );
