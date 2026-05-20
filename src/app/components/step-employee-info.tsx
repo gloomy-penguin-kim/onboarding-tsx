@@ -47,22 +47,26 @@ export function EmployeeInfoStep({
   className="bg-white border-slate-200 focus-visible:ring-blue-500"
         placeholder="First Name"
         value={firstName}
+        required
         onChange={(event) => setFirstName(event.target.value)}
       />
 <Input
   className="bg-white border-slate-200 focus-visible:ring-blue-500"
         placeholder="Last Name"
         value={lastName}
+        required
         onChange={(event) => setLastName(event.target.value)}
       />
 <Input
   className="bg-white border-slate-200 focus-visible:ring-blue-500"
         placeholder="Email"
         value={email}
+        required
         onChange={(event) => setEmail(event.target.value)}
       />
 
-      <Select value={roleId} onValueChange={setRoleId}>
+      <Select value={roleId} onValueChange={setRoleId}
+        required>
         <SelectTrigger className="w-full">
           <SelectValue placeholder="Select Role" />
         </SelectTrigger>

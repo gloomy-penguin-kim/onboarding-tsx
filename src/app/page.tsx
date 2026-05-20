@@ -126,10 +126,11 @@ export default function OnboardingPage() {
 
             const data = await response.json();
 
-            if (!response.ok) {
-                console.error("Create employee failed:", data);
+            if (!response.ok) { 
+                setErrors({ idNumber: data.error || "Failed to create employee." });
                 return;
             }
+            else setErrors({});
 
             loadEmployeeIntoForm(data);
             setStep(1);
@@ -151,10 +152,11 @@ export default function OnboardingPage() {
 
             const data = await response.json();
 
-            if (!response.ok) {
-                console.error("Load employee failed:", data);
+            if (!response.ok) { 
+                setErrors({ idNumber: data.error || "Failed to load employee." });
                 return;
             }
+            else setErrors({});
 
             console.log("Loaded employee:", data);
             loadEmployeeIntoForm(data);
@@ -213,7 +215,8 @@ export default function OnboardingPage() {
             const data = text ? JSON.parse(text) : null;
 
             if (!response.ok) {
-                console.error("Update employee failed:", data, response);
+                console.log("Update employee failed:", data, response);
+                setErrors({ general: data.error || "Failed to update employee." });
                 return;
             }
 
@@ -226,7 +229,7 @@ export default function OnboardingPage() {
     }
     async function submitOnboarding() {
         if (!employeeId) {
-            console.error("No employee loaded.");
+            console.log("No employee loaded.");
             return;
         }
 
@@ -267,7 +270,7 @@ export default function OnboardingPage() {
             const data = text ? JSON.parse(text) : null;
 
             if (!response.ok) {
-                console.error("Submit employee failed:", data, response);
+                console.log("Submit employee failed:", data, response);
                 return;
             }
 
