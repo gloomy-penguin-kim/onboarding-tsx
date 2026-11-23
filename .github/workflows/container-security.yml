@@ -49,6 +49,16 @@ jobs:
           secret-envs: |
             envfile=DATABASE_ENV_FILE
 
+      - name: Scan published image with Trivy
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          image-ref: ghcr.io/gloomy-penguin-kim/onboarding-tsx@${{ steps.build.outputs.digest }}
+          scan-type: image
+          format: table
+          severity: HIGH,CRITICAL
+          vuln-type: os,library
+          exit-code: '0'            
+
       - name: Sign image with Cosign
         env:
           DIGEST: ${{ steps.build.outputs.digest }}
